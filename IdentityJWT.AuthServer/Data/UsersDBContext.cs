@@ -1,7 +1,9 @@
-﻿using IdentityJWT.Models.Identity;
+﻿using IdentityJWT.AuthServer.Models.Identity;
+using IdentityJWT.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace IdentityJWT.API.Data
 {
@@ -18,6 +20,8 @@ namespace IdentityJWT.API.Data
            IdentityUserToken<long>
        >
     {
+        public DbSet<RefreshToken<long>> RefreshTokens { get; set; }
+
         public UsersDBContext() { }
         public UsersDBContext(DbContextOptions options) : base(options)
         {
@@ -64,6 +68,36 @@ namespace IdentityJWT.API.Data
             {
                 b.ToTable("Role_Claims", UsersShcema);
             });
+
+            #region Configure Refresh Token Table
+            modelBuilder.Entity<RefreshToken<long>>()
+                .ToTable("RefreshTokens", UsersShcema);
+
+            modelBuilder.Entity<RefreshToken<long>>()
+               .HasOne<AppIdentityUser>()
+               .WithMany()
+               .HasForeignKey(e => e.UserId);
+
+            modelBuilder.Entity<RefreshToken<long>>()
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<RefreshToken<long>>()
+                .Property(s => s.Token)
+                .IsRequired();
+
+            modelBuilder.Entity<RefreshToken<long>>()
+                .Property(s => s.RevokedAt)
+                .IsRequired(false);
+
+            modelBuilder.Entity<RefreshToken<long>>()
+                .Property(s => s.CreatedAt)
+                .IsRequired()
+                .HasDefaultValue(DateTime.Now);
+
+            modelBuilder.Entity<RefreshToken<long>>()
+                .Property(s => s.Expires)
+                .IsRequired();
+            #endregion
         }
     }
 }

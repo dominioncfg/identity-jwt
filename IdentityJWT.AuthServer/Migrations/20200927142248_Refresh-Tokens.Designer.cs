@@ -4,14 +4,16 @@ using IdentityJWT.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IdentityJWT.AuthServer.Migrations
 {
     [DbContext(typeof(UsersDBContext))]
-    partial class UsersDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200927142248_Refresh-Tokens")]
+    partial class RefreshTokens
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
