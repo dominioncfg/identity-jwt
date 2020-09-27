@@ -1,4 +1,5 @@
-﻿using IdentityJWT.API.Models;
+﻿using IdentityJWT.Models.Configuration;
+using IdentityJWT.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;

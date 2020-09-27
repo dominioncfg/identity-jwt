@@ -1,15 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityJWT.API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace IdentityJWT.API
 {
@@ -24,12 +16,6 @@ namespace IdentityJWT.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UsersDBContext>(o =>
-            {
-                string userCS = _configuration["ConnectionStrings:UsersDb"];
-                o.UseSqlServer(userCS);
-            });
-
             services.AddControllers();
         }
 
@@ -37,6 +23,9 @@ namespace IdentityJWT.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();
+
+            //app.UseAuthentication();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,4 +1,4 @@
-﻿namespace IdentityJWT.API.Models
+﻿namespace IdentityJWT.Models.Identity
 {
     public enum Roles
     {
