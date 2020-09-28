@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "852d42f2-5809-499f-845e-b2c6ad58341c",
+		"name": "AuthServerApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login (Admin)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"josecdom94@gmail.com\",\r\n    \"password\":\"Blablacar@1\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44320/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44320",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login (User)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"a@b.com\",\r\n    \"password\":\"Blablacar@1\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44320/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44320",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidW5pcXVlX25hbWUiOiJqb3NlY2RvbTk0IiwianRpIjoiNzk4NzllYzUtOWI0ZC00NzgzLTljMmQtNGJkODcxMzFlZjI2IiwiaWF0IjoxNjAxMjI3MTMxLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIm5iZiI6MTYwMTIyNzEzMCwiZXhwIjoxNjAxMjM0MzMwLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAifQ.wn-N4hoD-5hBzBypL4ezU-uRrlj3a1f4lZIyZ879UENqVuxDqVSGKav6qKTYDw4iCKSxLwY-a5uIKhQWJcKglGj9oll1NmfWmQb0Vhb-I85BLGtp7TWTTegGGdQMsma5WRYyBKTbtrZYVCeSTWdM76gqgG3u9RtJbqusyS-E23ifZF6DyoRQ5dVqeDPVtqB3EZb_RxTHyTcbVwjvB8UanWScnpIaCSUKzQPmxjp6tS-JEZ1-Trpz0mob25pVAObQPzDvDcSRQ4FrPgB6yPHlYk3wKsNAmzfWDzegFcFvVkEd1ermyNErxWWiEAyfhh3Q2gdaCAmA8l_9Ba55_Q-jqQ\",\r\n    \"refreshToken\": \"G8ZUFSX3xDRdPb6Re/BwEJG/Fz5YVVGmAr7C3zMFfHc=\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44320/api/auth/refresh-token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44320",
+					"path": [
+						"api",
+						"auth",
+						"refresh-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"JoseC_NormalUser\",\r\n  \"email\": \"a@b.com\",\r\n  \"password\": \"Blablacar@1\",\r\n  \"firstName\": \"Periquito\",\r\n  \"lastName\": \"Perez\",\r\n  \"age\": 26\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44320/api/auth/sign-up?callbackUrl=https://localhost:44320/api/auth/confirm-email",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44320",
+					"path": [
+						"api",
+						"auth",
+						"sign-up"
+					],
+					"query": [
+						{
+							"key": "callbackUrl",
+							"value": "https://localhost:44320/api/auth/confirm-email"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConfirmAccount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":6,\r\n    \"token\":\"CfDJ8A+VFg51fxxLsddYUAtM+2/2U1OEgkVFqTux6199Op8kUBXMrnalXglu1D+zkTRkepfuNhS8iXE/fH7q/VK9lStNAyy96H5dTlkrnaumRvnafFEjf9fk5jbqHKA7EI9oFH8P6BuCmt8X1OpqyjJxg2ImFEKobdIH4cOvc85b5JDSHmfB8xWjL/c5Dd+goNxWow==\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44320/api/auth/confirm-email",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44320",
+					"path": [
+						"api",
+						"auth",
+						"confirm-email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Password Send Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n  \"email\": \"a@b.com\"  \r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://localhost:44320/api/auth/reset-password-send-token?callbackUrl=https://localhost:44320/api/auth/reset-password",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44320",
+					"path": [
+						"api",
+						"auth",
+						"reset-password-send-token"
+					],
+					"query": [
+						{
+							"key": "callbackUrl",
+							"value": "https://localhost:44320/api/auth/reset-password"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Password Change Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n  \"email\": \"a@b.com\",\r\n  \"password\": \"Blablacar@2\",\r\n  \"token\": \"CfDJ8A+VFg51fxxLsddYUAtM+29IdztwBNe9ZfGD7s9ALyxw4nmk+p+J/S7ya6CU5BkfVatkxWxaZUywxABJyEeeqzdEk8BIrlx4YmV14PaSEMnzVwoSWHUhgiaInAOzQEXc127V385N8Qn64/hFY5GPYUenDVm6Kon/HAJMarcxh2BvTFcpS06LGSmxnS9xCTZpXQ==\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://localhost:44320/api/auth/reset-password",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44320",
+					"path": [
+						"api",
+						"auth",
+						"reset-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api (Public)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/api/cars/public",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"api",
+						"cars",
+						"public"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api (Any User)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2IiwidW5pcXVlX25hbWUiOiJKb3NlQ19Ob3JtYWxVc2VyIiwianRpIjoiYmJlMDliZWItY2Y0Zi00OTE4LTgwYTktMTg4NjRjOTU2YTA1IiwiaWF0IjoxNjAxMjg1NTUyLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWd1bGFyVXNlciIsIm5iZiI6MTYwMTI4NTU1MiwiZXhwIjoxNjAxMjkyNzUyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAifQ.noB7HU5U1oc_Kw-Po3jJ8xmlfnUnOSJZNUPvQttAFN1u4FssnwTNfNi19O-3uUrVMm4E-u9hfOIT2CmzT1stXg_ZUItY8yPgAJVSeWUqNLEl4iR_AI_mEocB-URSW0u6NHGeMEvQNJEG7UBG0IKirrr4_G4_AalXjAfOI4BGPuR9aQQDyuhRTNVf1X08ABcdSmtcTbBT3L3QIZKgVgo8sdvrmt4EjMYqXrcx7wTITR-2mnYUNwZleYHwfPbReApgZehIAIoBbsFVyktBUOrbkQpI3KOMyVtM_Cfox0K0ceTED3X5ABVnJ9w56naPubD1EqF9ofqo1k0wA4RaFZk1Ew",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/api/cars/any-logged-on",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"api",
+						"cars",
+						"any-logged-on"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api (Any Role)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2IiwidW5pcXVlX25hbWUiOiJKb3NlQ19Ob3JtYWxVc2VyIiwianRpIjoiYmJlMDliZWItY2Y0Zi00OTE4LTgwYTktMTg4NjRjOTU2YTA1IiwiaWF0IjoxNjAxMjg1NTUyLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWd1bGFyVXNlciIsIm5iZiI6MTYwMTI4NTU1MiwiZXhwIjoxNjAxMjkyNzUyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAifQ.noB7HU5U1oc_Kw-Po3jJ8xmlfnUnOSJZNUPvQttAFN1u4FssnwTNfNi19O-3uUrVMm4E-u9hfOIT2CmzT1stXg_ZUItY8yPgAJVSeWUqNLEl4iR_AI_mEocB-URSW0u6NHGeMEvQNJEG7UBG0IKirrr4_G4_AalXjAfOI4BGPuR9aQQDyuhRTNVf1X08ABcdSmtcTbBT3L3QIZKgVgo8sdvrmt4EjMYqXrcx7wTITR-2mnYUNwZleYHwfPbReApgZehIAIoBbsFVyktBUOrbkQpI3KOMyVtM_Cfox0K0ceTED3X5ABVnJ9w56naPubD1EqF9ofqo1k0wA4RaFZk1Ew",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/api/cars/any-role",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"api",
+						"cars",
+						"any-role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api (Admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2IiwidW5pcXVlX25hbWUiOiJKb3NlQ19Ob3JtYWxVc2VyIiwianRpIjoiYmJlMDliZWItY2Y0Zi00OTE4LTgwYTktMTg4NjRjOTU2YTA1IiwiaWF0IjoxNjAxMjg1NTUyLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWd1bGFyVXNlciIsIm5iZiI6MTYwMTI4NTU1MiwiZXhwIjoxNjAxMjkyNzUyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAifQ.noB7HU5U1oc_Kw-Po3jJ8xmlfnUnOSJZNUPvQttAFN1u4FssnwTNfNi19O-3uUrVMm4E-u9hfOIT2CmzT1stXg_ZUItY8yPgAJVSeWUqNLEl4iR_AI_mEocB-URSW0u6NHGeMEvQNJEG7UBG0IKirrr4_G4_AalXjAfOI4BGPuR9aQQDyuhRTNVf1X08ABcdSmtcTbBT3L3QIZKgVgo8sdvrmt4EjMYqXrcx7wTITR-2mnYUNwZleYHwfPbReApgZehIAIoBbsFVyktBUOrbkQpI3KOMyVtM_Cfox0K0ceTED3X5ABVnJ9w56naPubD1EqF9ofqo1k0wA4RaFZk1Ew",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/api/cars/admin",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"api",
+						"cars",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

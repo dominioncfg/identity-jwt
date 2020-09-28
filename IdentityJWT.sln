@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityJWT.API", "IdentityJWT.API\IdentityJWT.API.csproj", "{AD4D67CA-5617-4344-9A39-3C92A937F4DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityJWT.AuthServer", "IdentityJWT.AuthServer\IdentityJWT.AuthServer.csproj", "{0DC55557-C92E-468B-A31B-BBAFE7263A48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityJWT.AuthServer", "IdentityJWT.AuthServer\IdentityJWT.AuthServer.csproj", "{0DC55557-C92E-468B-A31B-BBAFE7263A48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

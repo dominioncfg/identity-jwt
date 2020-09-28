@@ -1,4 +1,5 @@
 using IdentityJWT.API.Data;
+using IdentityJWT.AuthServer.Services.Email;
 using IdentityJWT.Infra;
 using IdentityJWT.Models.Configuration;
 using IdentityJWT.Models.Identity;
@@ -22,12 +23,13 @@ namespace IdentityJWT.AuthServer
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<SmtpOptions>(_configuration.GetSection("Smtp"));
             services.AddDbContext<UsersDBContext>(o =>
             {
                 string userCS = _configuration["ConnectionStrings:UsersDb"];
                 o.UseSqlServer(userCS);
             });
-
+            services.AddTransient<IEmailService, EmailService>();
             services.Configure<IdentitySeedConfiguration>(_configuration.GetSection("IdentitySeedData"));
             services.Configure<IdentityOptions>(options =>
             {
