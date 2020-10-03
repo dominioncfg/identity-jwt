@@ -1,6 +1,7 @@
 ﻿using IdentityJWT.API.Data;
 using IdentityJWT.AuthServer.Models.Identity;
 using IdentityJWT.AuthServer.Services.Email;
+using IdentityJWT.Configuration;
 using IdentityJWT.Models.Configuration;
 using IdentityJWT.Models.Identity;
 using IdentityJWT.Models.Requests;
@@ -59,8 +60,9 @@ namespace IdentityJWT.AuthServer.Controllers
                         new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                         new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                        new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(_options.IssuedAt).ToString(),
-                        ClaimValueTypes.Integer64)
+                        new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(_options.IssuedAt).ToString(),ClaimValueTypes.Integer64),
+                        new Claim(ConfigurationConstants.Claims.FullName, $"{user.FirstName} {user.LastName}"),
+
                     };
 
             if (roles != null && roles.Any())
@@ -105,7 +107,7 @@ namespace IdentityJWT.AuthServer.Controllers
             string requestEmail = request.Email;
             string requestPass = request.Password;
 
-            if(!string.IsNullOrEmpty(requestEmail) && !string.IsNullOrEmpty(requestPass))
+            if (!string.IsNullOrEmpty(requestEmail) && !string.IsNullOrEmpty(requestPass))
             {
                 var user = await _userManager.FindByEmailAsync(requestEmail);
                 if (user != null)
@@ -139,7 +141,7 @@ namespace IdentityJWT.AuthServer.Controllers
                     return BadRequest("Invalid User/Password");
                 }
             }
-            
+
             return response;
         }
         #endregion

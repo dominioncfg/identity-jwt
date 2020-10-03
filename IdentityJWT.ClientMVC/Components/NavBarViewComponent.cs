@@ -1,4 +1,5 @@
 ﻿using ClientMVC.Models.Identity;
+using IdentityJWT.ClientMVC.Configuration;
 using IdentityJWT.ClientMVC.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,7 +14,7 @@ namespace IdentityJWT.ClientMVC
         {
             var userPrincipal = User as ClaimsPrincipal;
             string strRole = userPrincipal?.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Role)?.Value;
-            string fullName = string.Empty;
+            string fullName = userPrincipal?.Claims.FirstOrDefault(claim => claim.Type == ConfigurationConstants.Claims.FullName)?.Value;
 
             Roles role = Roles.RegularUser;
             if (!string.IsNullOrEmpty(strRole))
