@@ -1,0 +1,69 @@
+﻿@model SignUpViewModel;
+<div>
+    <form asp-action="SignUp" method="post">
+        <div>
+            <h2>Sign Up</h2>
+        </div>
+        <div>
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div>
+            <div>
+                <div>
+                    <label asp-for="FirstName"></label>
+                </div>
+                <div>
+                    <input asp-for="FirstName" />
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label asp-for="LastName"></label>
+                </div>
+                <div>
+                    <input asp-for="LastName" />
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label asp-for="UserName"></label>
+                </div>
+                <div>
+                    <input asp-for="UserName" />
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label asp-for="Email"></label>
+                </div>
+                <div>
+                    <input asp-for="Email" />
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label asp-for="Password"></label>
+                </div>
+                <div>
+                    <input type="password" asp-for="Password" />
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label asp-for="Age"></label>
+                </div>
+                <div>
+                    <input asp-for="Age" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Create Account" />
+        </div>
+    </form>
+</div>

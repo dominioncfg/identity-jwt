@@ -1,0 +1,33 @@
+﻿@model CarsListViewModel;
+@{
+    ViewBag.Title = "Index (Admin)";
+}
+
+<div>
+    @foreach (var car in Model.Cars)
+    {
+    <div>
+        <div>
+            ****
+        </div>
+
+        <div>
+            <label for="">Brand:</label>
+            <label for="">@car.Brand</label>
+        </div>
+
+        <div>
+            <label for="">Model:</label>
+            <label for="">@car.Model</label>
+        </div>
+        <div>
+            <label for="">MaxSpeed:</label>
+            <label for="">@car.MaxSpeed</label>
+        </div>
+        <div>
+            ****
+        </div>
+    </div>
+    }
+</div>
+
