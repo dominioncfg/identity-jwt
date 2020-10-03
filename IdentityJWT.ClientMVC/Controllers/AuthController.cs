@@ -49,6 +49,7 @@ namespace IdentityJWT.ClientMVC.Controllers
                 _httpContextAccessor.HttpContext.Session.SetString("user_token.Access", login.AccessToken);
                 _httpContextAccessor.HttpContext.Session.SetString("user_token.Refresh", login.RefreshToken);
                 _httpContextAccessor.HttpContext.Session.SetString("user_token.Expires", login.Expires.ToString());
+                return RedirectToAction(nameof(CarsController.IndexPublic), "Cars");
             }
             else
             {
@@ -248,6 +249,17 @@ namespace IdentityJWT.ClientMVC.Controllers
                 }
             }
             return result;
+        }
+        #endregion
+
+        #region Logout
+        [HttpGet]
+        public IActionResult SignOut()
+        {
+            _httpContextAccessor.HttpContext.Session.Remove("user_token.Access");
+            _httpContextAccessor.HttpContext.Session.Remove("user_token.Refresh");
+            _httpContextAccessor.HttpContext.Session.Remove("user_token.Expires");
+            return RedirectToAction(nameof(Login));
         }
         #endregion
     }

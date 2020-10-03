@@ -1,0 +1,34 @@
+﻿@model NavBarViewModel
+
+<header>
+    <ul>
+        <li>
+            <a asp-controller="Cars" asp-action="IndexPublic">Home</a>
+        </li>
+        <li>
+            <a asp-controller="Cars" asp-action="IndexAnyUser">Any User</a>
+        </li>
+
+        <li>
+            <a asp-controller="Cars" asp-action="IndexAdmin">Admin</a>
+        </li>
+        @if (Model.IsLoggedIn)
+        {
+            <li>
+                <a asp-controller="Auth" asp-action="SignOut">Sign Out</a>
+            </li>
+            <li>
+                <label>Hello @Model.UserFullName (@Model.CurrentRole)</label>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a asp-controller="Auth" asp-action="Login">Sign In</a>
+            </li>
+            <li>
+                <a asp-controller="Auth" asp-action="SignUp">Sign Up</a>
+            </li>
+        }
+    </ul>
+</header>
