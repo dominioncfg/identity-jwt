@@ -147,6 +147,12 @@ namespace IdentityJWT.Infra
                         jwtBearerChallengeContext.Response.Redirect(loginUri);
                         jwtBearerChallengeContext.HandleResponse();
                         return Task.CompletedTask;
+                    },
+                    OnForbidden = context =>
+                    {
+                        context.Response.Redirect("/Auth/AccessDenied");
+                        //context.();
+                        return Task.CompletedTask;
                     }
                 };
 

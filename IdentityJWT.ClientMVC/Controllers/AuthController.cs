@@ -271,5 +271,13 @@ namespace IdentityJWT.ClientMVC.Controllers
             return RedirectToAction(nameof(Login));
         }
         #endregion
+
+        #region Access Denied
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+        #endregion
     }
 }
