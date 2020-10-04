@@ -131,19 +131,21 @@ namespace IdentityJWT.Infra
                     },
                     OnChallenge = jwtBearerChallengeContext =>
                     {
-                        jwtBearerChallengeContext.Response.Redirect("/Auth/Login");
+
+                        var redirectUri = jwtBearerChallengeContext.Properties.RedirectUri;
+                        if (string.IsNullOrEmpty(redirectUri))
+                        {
+                            var request = jwtBearerChallengeContext.HttpContext.Request;
+                            string originalPathBase = string.Empty;// $"{request.Scheme}://{request.Host}{request.PathBase}";
+                            string originalPath = $"{request.Path}";
+                            string queryString = jwtBearerChallengeContext.HttpContext.Request.QueryString.ToString();
+                            redirectUri = originalPathBase + originalPath + queryString;
+                        }
+
+                        var loginUri = "/Auth/Login" + QueryString.Create("ReturnUrl", redirectUri);
+
+                        jwtBearerChallengeContext.Response.Redirect(loginUri);
                         jwtBearerChallengeContext.HandleResponse();
-
-                        //var redirectUri = .red properties.RedirectUri;
-                        //if (string.IsNullOrEmpty(redirectUri))
-                        //{
-                        //    redirectUri = OriginalPathBase + OriginalPath + Request.QueryString;
-                        //}
-
-                        //var loginUri = Options.LoginPath + QueryString.Create(Options.ReturnUrlParameter, redirectUri);
-                        //var redirectContext = new RedirectContext<CookieAuthenticationOptions>(Context, Scheme, Options, properties, BuildRedirectUri(loginUri));
-                        //await configurationOptions.R..RedirectToLogin(redirectContext);
-
                         return Task.CompletedTask;
                     }
                 };

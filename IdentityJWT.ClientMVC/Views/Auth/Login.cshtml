@@ -3,7 +3,7 @@
     ViewBag.Title = "Login";
 }
 <div>
-    <form asp-action="LogIn" method="post">
+    <form asp-action="LogIn" method="post" asp-route-ReturnUrl="@Model.ReturnUrl">
         <div>
             <div>
                 <div>

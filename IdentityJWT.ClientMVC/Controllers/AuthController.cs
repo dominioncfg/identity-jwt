@@ -26,13 +26,13 @@ namespace IdentityJWT.ClientMVC.Controllers
 
         #region Login
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login([FromQuery(Name = "ReturnUrl")] string returnUrl)
         {
-            return View(new LoginViewModel());
+            return View(new LoginViewModel() {ReturnUrl = returnUrl });
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel viewModel)
+        public async Task<IActionResult> Login(LoginViewModel viewModel, [FromQuery(Name = "ReturnUrl")] string returnUrl)
         {
             string loginUrl = Endpoints.AuthServer.Auth.Login(_authServerUrl);
             HttpClient client = new HttpClient();
@@ -49,7 +49,16 @@ namespace IdentityJWT.ClientMVC.Controllers
                 _httpContextAccessor.HttpContext.Session.SetString("user_token.Access", login.AccessToken);
                 _httpContextAccessor.HttpContext.Session.SetString("user_token.Refresh", login.RefreshToken);
                 _httpContextAccessor.HttpContext.Session.SetString("user_token.Expires", login.Expires.ToString());
-                return RedirectToAction(nameof(CarsController.IndexPublic), "Cars");
+
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    return LocalRedirect(returnUrl);
+
+                }
+                else
+                {
+                    return RedirectToAction(nameof(CarsController.IndexPublic), "Cars");
+                }
             }
             else
             {
@@ -186,7 +195,7 @@ namespace IdentityJWT.ClientMVC.Controllers
                     HttpClient client = new HttpClient();
                     ResetPasswordSendTokenRequest request = new ResetPasswordSendTokenRequest()
                     {
-                       Email = viewModel.Email
+                        Email = viewModel.Email
                     };
                     var response = await client.PostAsync(signUpUrl, request);
                     if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
@@ -196,7 +205,7 @@ namespace IdentityJWT.ClientMVC.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("Email","Fail for some reason");
+                        ModelState.AddModelError("Email", "Fail for some reason");
                     }
                 }
                 catch
