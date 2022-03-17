@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"josecdom94@gmail.com\",\r\n    \"password\":\"Blablacar@1\"\r\n\r\n}",
+					"raw": "{\r\n    \"email\":\"pepitoperez@gmail.com\",\r\n    \"password\":\"SuperPass@1\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -54,7 +54,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"a@b.com\",\r\n    \"password\":\"Blablacar@1\"\r\n\r\n}",
+					"raw": "{\r\n    \"email\":\"a@b.com\",\r\n    \"password\":\"SupePass@1\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
